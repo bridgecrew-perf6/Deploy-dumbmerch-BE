@@ -187,15 +187,23 @@ exports.getDetailProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const data = req.body;
 
-        await product.update(
-            {
-                ...data,
-                image: req.file.filename,
-                idUser: req.user.id, //dari token
-            },
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'dumbmerch',
+            use_filename: true,
+            unique_filename: false,
+        });
 
+        const data = {
+            name: req?.body?.name,
+            desc: req?.body.desc,
+            price: req?.body?.price,
+            image: result.public_id,
+            qty: req?.body?.qty,
+            idUser: req?.user?.id,
+        };
+
+        await product.update(data,
             {
                 where: { id },
             },
@@ -205,7 +213,7 @@ exports.updateProduct = async (req, res) => {
             status: "success",
             message: `Update product id: ${id} finished`,
             data: {
-                image: req.file.filename,
+                image: result.public_id,
                 desc: req.body.desc,
                 name: req.body.name,
                 price: req.body.price,
