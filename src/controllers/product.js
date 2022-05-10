@@ -187,7 +187,6 @@ exports.getDetailProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const data = req.body;
 
         const result = await cloudinary.uploader.upload(req.file.path, {
             folder: 'dumbmerch_file_b33',
@@ -204,7 +203,7 @@ exports.updateProduct = async (req, res) => {
             idUser: req?.user?.id,
         };
 
-        await product.update(
+        await product.update(data,
             {
                 where: { id },
             },
