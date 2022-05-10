@@ -61,7 +61,7 @@ exports.addProduct = async (req, res) => {
 
         // Handle uploader to cloudinary here ...
         const result = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'dumbmerch_file_b33',
+            folder: 'dumbmerch',
             use_filename: true,
             unique_filename: false,
         });
@@ -189,7 +189,7 @@ exports.updateProduct = async (req, res) => {
         const { id } = req.params;
 
         const result = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'dumbmerch_file_b33',
+            folder: 'dumbmerch',
             use_filename: true,
             unique_filename: false,
         });
