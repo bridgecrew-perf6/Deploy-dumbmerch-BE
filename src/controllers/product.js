@@ -198,7 +198,7 @@ exports.updateProduct = async (req, res) => {
             name: req?.body?.name,
             desc: req?.body.desc,
             price: req?.body?.price,
-            image: result.public_id,
+            image: result?.public_id,
             qty: req?.body?.qty,
             idUser: req?.user?.id,
         };
