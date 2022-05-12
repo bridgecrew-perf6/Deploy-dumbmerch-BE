@@ -189,17 +189,11 @@ exports.updateProduct = async (req, res) => {
         const { id } = req.params;
         const data = req.body;
 
-        const result = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'dumbmerch',
-            use_filename: true,
-            unique_filename: false,
-        });
-
         await product.update(
             {
                 ...data,
-                image: result?.public_id,
-                idUser: req?.user?.id, //dari token
+                image: req.file.filename,
+                idUser: req.user.id, //dari token
             },
 
             {
