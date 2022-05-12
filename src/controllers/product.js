@@ -213,7 +213,7 @@ exports.updateProduct = async (req, res) => {
             status: "success",
             message: `Update product id: ${id} finished`,
             data: {
-                image: result.public_id,
+                image: req?.file?.filename,
                 desc: req.body.desc,
                 name: req.body.name,
                 price: req.body.price,
