@@ -198,8 +198,8 @@ exports.updateProduct = async (req, res) => {
         await product.update(
             {
                 ...data,
-                image: result.public_id,
-                idUser: req.user.id, //dari token
+                image: result?.public_id,
+                idUser: req?.user?.id, //dari token
             },
 
             {
@@ -211,7 +211,7 @@ exports.updateProduct = async (req, res) => {
             status: "success",
             message: `Update product id: ${id} finished`,
             data: {
-                image: req.file.filename,
+                image: result.public_id,
                 desc: req.body.desc,
                 name: req.body.name,
                 price: req.body.price,
