@@ -53,7 +53,7 @@ exports.register = async (req, res) => {
                 name: newUser.name,
                 email: newUser.email,
                 token
-                // code 
+                // code here
             },
         });
     } catch (error) {
