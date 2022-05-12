@@ -33,7 +33,7 @@ router.get('/products', auth, getProduct)
 router.get('/product/:id', auth, getDetailProduct)
 router.patch('/product/:id', auth, uploadFile("image"), updateProduct)
 router.delete('/product/:id', auth, deleteProduct)
-router.post('/product', auth, uploadFile("image"), addProduct) // place middleware before controller
+router.post('/product', auth, uploadFile("image"), addProduct) // place middleware before controllers
 
 // router.get('/transactions', getTransactions)
 router.post('/transaction', auth, addTransaction)
